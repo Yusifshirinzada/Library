@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  library_db:
+    image: mysql:latest
+    restart: on-failure
+
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_DATABASE: 'library'
+      MYSQL_USER: 'library'
+      MYSQL_PASSWORD: '123456'
+    volumes:
+      - library_database:/var/lib/libraryDb
+    ports:
+      - "3305:3306"
+    networks:
+      - library_network
+
+volumes:
+  library_database:
+networks:
+  library_network:
